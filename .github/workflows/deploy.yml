@@ -34,7 +34,7 @@ jobs:
         npm run lint
     - name: Build Angular app
       run: |
-        npm run build -- --configuration production --base-href "/HelloWorldDevOps/"
+        npm run build -- --configuration production --base-href "/"
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
