@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      contents: write
       pages: write      # to deploy to Pages
       id-token: write  
 
@@ -30,10 +31,10 @@ jobs:
         
     - name: Build Angular app
       run: |
-        npm run build -- --configuration production --base-href "/"
+        npm run build -- --configuration production
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-          folder: . # The folder the action should deploy.
+          folder: ./dist/hello-world/browser/
           branch: gh-pages
