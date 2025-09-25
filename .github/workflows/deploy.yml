@@ -40,4 +40,4 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
           branch: gh-pages    # branche cible
-          folder: dist/my-app # chemin du build Angular
+          folder: dist/HelloWorldDevOps # chemin du build Angular
