@@ -1,14 +1,21 @@
-name: NodeJS with Grunt
+name: Deploy NG app
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write  
+  
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
 
     steps:
     - uses: actions/checkout@v4
@@ -23,9 +30,6 @@ jobs:
         npm install
         npm run build
 
-    - name: Deploy to gh pages
-      run: |
-        npx angular-cli-ghpages --dir=dist/HelloWorldDevOps
-      env:
-        CI: true
-        GH_TOKEN: ${{ secrets.GITHUBPAGES }}
+    - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
