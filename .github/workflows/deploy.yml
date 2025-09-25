@@ -36,8 +36,7 @@ jobs:
       run: |
         npm run build -- --configuration production --base-href "/"
 
-    - name: Deploy to GitHub Pages
+    - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-          branch: gh-pages    # branche cible
-          folder: dist/HelloWorldDevOps # chemin du build Angular
+          folder: . # The folder the action should deploy.
