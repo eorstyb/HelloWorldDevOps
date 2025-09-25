@@ -28,8 +28,16 @@ jobs:
     - name: Build
       run: |
         npm install
-        npm run build
+        
+    - name: Run lint
+      run: |
+        npm run lint
+    - name: Build Angular app
+      run: |
+        npm run build -- --configuration production --base-href "/HelloWorldDevOps/"
 
     - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+          branch: gh-pages    # branche cible
+          folder: dist/my-app # chemin du build Angular
